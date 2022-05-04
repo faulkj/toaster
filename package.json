@@ -3,9 +3,9 @@
    "version": "1.0.0",
    "description": "A highly customizable vanilla JavaScript library used to cleanly serve toast notifications.",
    "main": "dist/toaster.js",
-   "type": "module",
    "scripts": {
-      "test": "mocha"
+      "build": "webpack --mode development --devtool source-map",
+      "minimize": "webpack --mode production --devtool source-map"
    },
    "repository": {
       "type": "git",
@@ -14,7 +14,8 @@
    "keywords": [
       "toast",
       "notifications",
-      "javascript"
+      "javascript",
+      "vanilla javascript"
    ],
    "author": "Joshua Faulkenberry <j@joshuafaulkenberry.com> (https://joshuafaulkenberry.com/)",
    "license": "Kopimi",
@@ -22,11 +23,14 @@
       "url": "https://github.com/faulkj/fisforformat/issues"
    },
    "homepage": "https://github.com/faulkj/fisforformat#readme",
-   "browserslist": "defaults",
    "devDependencies": {
-      "@swc/cli": "^0.1.51",
-      "@swc/core": "^1.2.97",
-      "browserslist": "^4.17.4",
-      "regenerator-runtime": "^0.13.9"
+      "css-loader": "^6.5.1",
+      "mini-css-extract-plugin": "^2.4.4",
+      "sass": "^1.43.4",
+      "sass-loader": "^12.3.0",
+      "swc-loader": "^0.1.15",
+      "terser-webpack-plugin": "^5.3.1",
+      "webpack": "^5.62.1",
+      "webpack-cli": "^4.9.1"
    }
 }

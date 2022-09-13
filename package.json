@@ -2,10 +2,9 @@
    "name": "@faulkj/toaster",
    "version": "1.1.0",
    "description": "A highly customizable vanilla JavaScript library used to cleanly serve toast notifications.",
-   "main": "dist/toaster.js",
+   "main": "dist/js/toaster.js",
    "scripts": {
-      "build": "webpack --mode development --devtool source-map",
-      "minimize": "webpack --mode production --devtool source-map"
+      "build": "rimraf dist && tsc && rollup -c"
    },
    "repository": {
       "type": "git",
@@ -20,17 +19,23 @@
    "author": "Joshua Faulkenberry <j@joshuafaulkenberry.com> (https://joshuafaulkenberry.com/)",
    "license": "Kopimi",
    "bugs": {
-      "url": "https://github.com/faulkj/fisforformat/issues"
+      "url": "https://github.com/faulkj/toaster/issues"
    },
-   "homepage": "https://github.com/faulkj/fisforformat#readme",
+   "homepage": "https://github.com/faulkj/toaster#readme",
    "devDependencies": {
-      "css-loader": "^6.5.1",
-      "mini-css-extract-plugin": "^2.4.4",
-      "sass": "^1.43.4",
-      "sass-loader": "^12.3.0",
-      "swc-loader": "^0.1.15",
-      "terser-webpack-plugin": "^5.3.1",
-      "webpack": "^5.62.1",
-      "webpack-cli": "^4.9.1"
+      "@types/rollup-plugin-peer-deps-external": "^2.2.1",
+      "node-sass": "^7.0.3",
+      "rimraf": "^3.0.2",
+      "rollup": "^2.79.0",
+      "rollup-plugin-babel": "^4.4.0",
+      "rollup-plugin-commonjs": "^10.1.0",
+      "rollup-plugin-dts": "^4.2.2",
+      "rollup-plugin-node-resolve": "^5.2.0",
+      "rollup-plugin-peer-deps-external": "^2.2.4",
+      "rollup-plugin-postcss": "^4.0.2",
+      "rollup-plugin-scss": "^3.0.0",
+      "rollup-plugin-terser": "^7.0.2",
+      "rollup-plugin-typescript2": "^0.34.0",
+      "typescript": "^4.8.3"
    }
 }

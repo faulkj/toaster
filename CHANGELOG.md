@@ -1,5 +1,8 @@
 # Toaster Changelog
 
+[9/13/2022] Version 2.0
+   - Overhauled to work as module
+
 [5/3/2022] Version 1.1
    - Build cleanup
    

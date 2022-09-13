@@ -1,0 +1,27 @@
+{
+   "compilerOptions": {
+      "target": "es2015",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "noEmitOnError": true,
+      "lib": [
+         "es6",
+         "es2017",
+         "es2019",
+         "dom"
+      ],
+      "strict": true,
+      "esModuleInterop": false,
+      "outDir": "dist",
+      "rootDir": "./src",
+      "emitDecoratorMetadata": true,
+      "emitDeclarationOnly": false,
+      "experimentalDecorators": true
+   },
+   "include": [
+      "./src/**/*.ts"
+   ],
+   "exclude": [
+      "node_modules"
+   ]
+}

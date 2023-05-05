@@ -5,18 +5,23 @@
       "moduleResolution": "node",
       "noEmitOnError": true,
       "lib": [
-         "es6",
-         "es2017",
-         "es2019",
+         "es2022",
          "dom"
       ],
       "strict": true,
       "esModuleInterop": false,
       "outDir": "dist",
-      "rootDir": "./src",
+      "rootDir": "src",
+      "baseUrl": ".",
       "emitDecoratorMetadata": true,
       "emitDeclarationOnly": false,
-      "experimentalDecorators": true
+      "experimentalDecorators": true,
+      "paths": {
+         "*": [
+            "*",
+            "../dist/*"
+         ]
+      }
    },
    "include": [
       "./src/**/*.ts"

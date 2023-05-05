@@ -1,37 +1,27 @@
 /*!
- * Toaster v2.0
+ * Toaster v2.0.1
  *
- * Kopimi 2022 Joshua Faulkenberry
+ * Kopimi 2023 Joshua Faulkenberry
  * Unlicensed under The Unlicense
  * http://unlicense.org/
  */
 
 import "../scss/toaster.scss"
-
-type opts = {
-   timeout: number,
-   class: string,
-   duration: number,
-   anchor: string,
-   icon: string | null,
-   click: any
-}
+import type { opts } from '../types/toaster'
 
 export default class Toaster {
 
-   static version     : string = "2.0"
+   static readonly version     : string = "2.0.1"
    static toastQueue  : {
                            t: HTMLElement,
                            o: any
                         }[] = []
    static currentToast: HTMLElement | null
 
-   el: HTMLDivElement
+   el: HTMLDivElement = document.createElement("div")
    options: opts
 
    constructor(msg: string, options: opts) {
-      this.el = document.createElement("div")
-
       this.options = {
          ...{
             timeout: 2500,
@@ -72,8 +62,8 @@ export default class Toaster {
 
       if (this.options.click) {
          this.el.style.cursor = "pointer"
-         this.el.addEventListener("click", () => {
-            if (this.options.click) this.options.click()
+         this.el.addEventListener("click", e => {
+            if (this.options.click) this.options.click(e)
             this.el.dispatchEvent(new Event('eat'))
          })
       }

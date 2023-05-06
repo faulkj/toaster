@@ -7,7 +7,7 @@
  */
 
 import "../scss/toaster.scss"
-import type { opts } from '../types/toaster'
+import type { Options } from '../types/toaster'
 
 export default class Toaster {
 
@@ -19,9 +19,9 @@ export default class Toaster {
    static currentToast: HTMLElement | null
 
    el: HTMLDivElement = document.createElement("div")
-   options: opts
+   options: Options
 
-   constructor(msg: string, options: opts) {
+   constructor(msg: string, options: Options) {
       this.options = {
          ...{
             timeout: 2500,
@@ -52,7 +52,7 @@ export default class Toaster {
                let x = document.querySelectorAll("div.toaster").length
                Array.from(document.querySelectorAll("div.toaster")).forEach((tst: HTMLDivElement | any) => {
                   x--
-                  tst.style[this.options.anchor] = (x * (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop))) + "px"
+                  tst.style[(this.options.anchor as string)] = (x * (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop))) + "px"
                })
 
                this.swallow()

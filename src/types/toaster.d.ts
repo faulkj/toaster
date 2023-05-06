@@ -1,24 +1,24 @@
 declare module '@faulkj/toaster'
 
-type opts = {
-   timeout: number,
-   class: string,
-   duration: number,
-   anchor: string,
-   icon: string | null,
-   click: ((event: Event) => void) | null
-}
-
 export default class Toaster {
    static version: string
-   static toastQueue: { t: HTMLElement, o: opts }[]
+   static toastQueue: { t: HTMLElement, o: Options }[]
    static currentToast: HTMLElement | null
 
    el: HTMLDivElement
-   options: opts
+   options: Options
 
-   constructor(msg: string, options: opts)
+   constructor(msg: string, options: Options)
    eat(): void
    swallow(): void
    static serve(): void
+}
+
+type Options = {
+   timeout?: number,
+   class?: string,
+   duration?: number,
+   anchor?: string,
+   icon?: string | null,
+   click?: ((event: Event) => void) | null
 }

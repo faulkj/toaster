@@ -1,5 +1,12 @@
 # Toaster Changelog
 
+***5/4/2023*** Version 2.0.2
+   - Fixed Options typing
+
+***5/4/2023*** Version 2.0.1
+   - Update typings
+   - Overhauled rollup build
+
 ***5/4/2023*** Version 2.0.1
    - Update typings
    - Overhauled rollup build

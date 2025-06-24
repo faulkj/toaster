@@ -1,11 +1,10 @@
-.toaster,
-.toaster.alert {
-   position: fixed;
+.toaster {
+   position: fixed !important;
    z-index: 10000;
    opacity: .90;
    width: 280px;
-   right: 10px;
-   margin-bottom: 10px;
+   right: 12px;
+   margin-bottom: 12px;
    box-shadow: 1px 3px 4px rgba(0, 0, 0, .4);
    border: 1px solid #000;
    border-radius: 4px;

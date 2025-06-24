@@ -1,5 +1,8 @@
 # Toaster Changelog
 
+***6/24/2025*** Version 2.1.1
+   - Style tweak
+
 ***6/23/2025*** Version 2.1
    - Typing overhaul
    - Optimizations

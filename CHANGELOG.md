@@ -1,7 +1,10 @@
 # Toaster Changelog
 
+***6/24/2025*** Version 2.1.2
+   - Fix to properly display drop shadows
+
 ***6/24/2025*** Version 2.1.1
-   - Style tweak
+   - Style tweaks
 
 ***6/23/2025*** Version 2.1
    - Typing overhaul

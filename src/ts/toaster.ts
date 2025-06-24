@@ -95,7 +95,7 @@ export default class Toaster implements ToasterInstance {
 
       (() => {
          tst.style.transition = `clip-path ${options.duration}ms, ${options.anchor} ${options.duration}ms`
-         tst.style.clipPath = "inset(0)"
+         tst.style.clipPath = "inset(-100%)"
          let x = document.querySelectorAll("div.toaster").length
 
          Array.from(document.querySelectorAll("div.toaster")).forEach((el: HTMLDivElement | any) => {

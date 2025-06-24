@@ -1,17 +1,20 @@
+$toaster-margin: 1em;
+$toaster-radius: 4px;
+
 .toaster {
    position: fixed !important;
    z-index: 10000;
-   opacity: .90;
+   opacity: 0.9;
    width: 280px;
-   right: 12px;
-   margin-bottom: 12px;
-   box-shadow: 1px 3px 4px rgba(0, 0, 0, .4);
+   right: $toaster-margin;
+   margin-bottom: $toaster-margin;
+   box-shadow: 0 $toaster-radius $toaster-radius rgba(0, 0, 0, 0.4);
    border: 1px solid #000;
-   border-radius: 4px;
-   padding: 6px 12px;
+   border-radius: $toaster-radius;
+   padding: 6px $toaster-margin;
    background: #eee;
    cursor: default;
-   clip-path: inset(0 0 100% 0);
+   clip-path: inset(0 -#{$toaster-radius} 100% -#{$toaster-radius} round #{$toaster-radius * 2});
 
    .icon {
       font-size: 32px;
@@ -19,7 +22,7 @@
       position: relative;
       display: table-cell;
       vertical-align: middle;
-      padding-right: 12px;
+      padding-right: $toaster-margin;
    }
 
    .body {
@@ -28,5 +31,4 @@
       display: table-cell;
       vertical-align: middle;
    }
-
 }

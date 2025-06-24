@@ -1,6 +1,6 @@
 {
    "name": "@faulkj/toaster",
-   "version": "2.1.1",
+   "version": "2.1.2",
    "description": "A highly customizable vanilla JavaScript library used to cleanly serve toast notifications.",
    "type": "module",
    "main": "dist/js/toaster.min.js",

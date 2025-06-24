@@ -1,5 +1,9 @@
 # Toaster Changelog
 
+***6/23/2025*** Version 2.1
+   - Typing overhaul
+   - Optimizations
+
 ***5/4/2023*** Version 2.0.2
    - Fixed Options typing
 

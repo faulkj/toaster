@@ -4,29 +4,21 @@
       "module": "esnext",
       "moduleResolution": "node",
       "noEmitOnError": true,
-      "lib": [
-         "es2022",
-         "dom"
-      ],
       "strict": true,
-      "esModuleInterop": false,
+      "esModuleInterop": true,
+      "rootDir": "./",
       "outDir": "dist",
-      "rootDir": "src",
-      "baseUrl": ".",
       "emitDecoratorMetadata": true,
       "emitDeclarationOnly": false,
       "experimentalDecorators": true,
-      "paths": {
-         "*": [
-            "*",
-            "../dist/*"
-         ]
-      }
+      "allowSyntheticDefaultImports":true,
+      "noImplicitAny": true,
+      "typeRoots": [
+         "node_modules/@types"
+      ]
    },
    "include": [
-      "./src/**/*.ts"
-   ],
-   "exclude": [
-      "node_modules"
+      "./src/**/*.ts",
+      "*.d.ts"
    ]
 }

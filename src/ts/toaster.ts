@@ -1,27 +1,24 @@
 /*!
- * Toaster v2.0.1
+ * Toaster v2.1
  *
- * Kopimi 2023 Joshua Faulkenberry
+ * Kopimi 2025 Joshua Faulkenberry
  * Unlicensed under The Unlicense
  * http://unlicense.org/
  */
 
+import type from "../../toaster"
 import "../scss/toaster.scss"
-import type { Options } from '../types/toaster'
 
-export default class Toaster {
+export default class Toaster implements ToasterInstance {
 
-   static readonly version     : string = "2.0.1"
-   static toastQueue  : {
-                           t: HTMLElement,
-                           o: any
-                        }[] = []
-   static currentToast: HTMLElement | null
+   readonly version = "2.1";
+   static toastQueue: { t: HTMLElement; o: Options }[] = []
+   static currentToast: HTMLElement | null = null
 
-   el: HTMLDivElement = document.createElement("div")
-   options: Options
+   el = document.createElement("div")
+   options
 
-   constructor(msg: string, options: Options) {
+   constructor(msg: string, options?: Partial<Options>) {
       this.options = {
          ...{
             timeout: 2500,
@@ -88,12 +85,12 @@ export default class Toaster {
    }
 
    static serve() {
-      if (!this.toastQueue.length) return
-      var tst = this.toastQueue[0].t
-      var options = this.toastQueue[0].o
+      if (!Toaster.toastQueue.length) return
+      var tst = Toaster.toastQueue[0].t
+      var options = Toaster.toastQueue[0].o
 
       document.body.appendChild(tst)
-      tst.style[options.anchor] = 0 - (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop)) + "px"
+      tst.style[(options.anchor as any)] = 0 - (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop)) + "px"
       tst.style.clipPath = `inset(0 0 ` + (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop)) + `px)`;
 
       (() => {
@@ -103,13 +100,13 @@ export default class Toaster {
 
          Array.from(document.querySelectorAll("div.toaster")).forEach((el: HTMLDivElement | any) => {
             x--
-            el.style[options.anchor] = ((x * (el.offsetHeight + parseInt(getComputedStyle(el).marginBottom) + parseInt(getComputedStyle(el).marginTop)))) + "px"
+            el.style[(options.anchor as any)] = ((x * (el.offsetHeight + parseInt(getComputedStyle(el).marginBottom) + parseInt(getComputedStyle(el).marginTop)))) + "px"
          })
       })()
 
-      this.currentToast = tst
+      Toaster.currentToast = tst
 
-      this.currentToast?.dispatchEvent(new Event('baked'))
+      Toaster.currentToast?.dispatchEvent(new Event('baked'))
 
       const next = (event: any) => {
          if (event.propertyName != options.anchor) return
@@ -117,13 +114,13 @@ export default class Toaster {
             tst?.dispatchEvent(new Event('eat'))
          }, options.timeout)
 
-         this.toastQueue.shift()
+         Toaster.toastQueue.shift()
          event.target.removeEventListener('transitionend', next, false)
          event.target.dispatchEvent(new Event('served'))
-         if (this.toastQueue.length) this.serve()
+         if (Toaster.toastQueue.length) this.serve()
       }
 
-      this.currentToast?.addEventListener('transitionend', next)
+      Toaster.currentToast?.addEventListener('transitionend', next)
    }
 
 }

@@ -1,4 +1,5 @@
-.toaster {
+.toaster,
+.toaster.alert {
    position: fixed;
    z-index: 10000;
    opacity: .90;

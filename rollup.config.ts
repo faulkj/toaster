@@ -3,36 +3,61 @@ import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 
 const
-   nm = "toaster",
-   minify = process.env.NODE_ENV === 'production'
+   nm = 'toaster',
 
-export default {
-   input: `./src/ts/${nm}.ts`,
+   basePlugins = [
+      typescript({
+         tsconfig: './tsconfig.json',
+         outDir: 'dist/js',
+         removeComments: true,
+         declaration: false
+      })
+   ]
 
-   output: [
-      {
+export default [
+   {
+      input: `./src/ts/${nm}.ts`,
+      output: {
          sourcemap: true,
          dir: `./dist`,
-         name: `${nm}${minify ? '.min' : ''}`,
-         entryFileNames: `js/${nm}${minify ? '.min' : ''}.js`,
+         name: `Toaster`,
+         entryFileNames: `js/${nm}.js`,
+         format: 'umd'
+      },
+      plugins: [
+         ...basePlugins,
+         postcss({
+            extract: `css/${nm}.css`,
+            minimize: false,
+            sourceMap: true,
+            extensions: ['.scss']
+         })
+      ]
+   },
+   {
+      input: `./src/ts/${nm}.ts`,
+      output: {
+         sourcemap: true,
+         dir: `./dist`,
+         name: `Toaster`,
+         entryFileNames: `js/${nm}.min.js`,
          format: 'umd',
-         plugins: minify ? [
+         plugins: [
             terser({
                format: {
                   comments: false
                }
             })
-         ] : []
+         ]
       },
-   ],
-   plugins: [
-      typescript({ outDir: 'dist/js', }),
-      postcss({
-         extract: `css/${nm}${minify ? '.min' : ''}.css`,
-         minimize: minify,
-         sourceMap: true,
-         extensions: ['.scss'],
-      })
-   ]
-
-}
+      plugins: [
+         ...basePlugins,
+         postcss({
+            extract: `css/${nm}.min.css`,
+            minimize: true,
+            sourceMap: true,
+            extensions: ['.scss']
+         })
+      ]
+   }
+]

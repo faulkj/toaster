@@ -1,5 +1,5 @@
 /*!
- * Toaster v2.1.3
+ * Toaster v2.1.4
  *
  * Kopimi 2025 Joshua Faulkenberry
  * Unlicensed under The Unlicense
@@ -7,11 +7,10 @@
  */
 
 import type from "../../toaster"
-import "../scss/toaster.scss"
 
 export default class Toaster implements ToasterInstance {
 
-   readonly version = "2.1.3";
+   readonly version = "2.1.4";
    static toastQueue: { t: HTMLElement; o: Options }[] = []
    static currentToast: HTMLElement | null = null
 

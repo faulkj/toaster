@@ -2,6 +2,7 @@
 
 ***6/26/2025*** Version 2.1.4
    - Fix for nullable timeout
+   - Remove built in style inclusion
 
 ***6/24/2025*** Version 2.1.3
    - Fix to properly display drop shadows

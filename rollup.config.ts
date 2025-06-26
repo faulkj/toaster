@@ -2,62 +2,37 @@ import postcss from 'rollup-plugin-postcss'
 import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 
-const
-   nm = 'toaster',
-
-   basePlugins = [
-      typescript({
-         tsconfig: './tsconfig.json',
-         outDir: 'dist/js',
-         removeComments: true,
-         declaration: false
-      })
-   ]
+const nm = 'toaster'
 
 export default [
-   {
+   ...[true, false].map(min => ({
       input: `./src/ts/${nm}.ts`,
       output: {
          sourcemap: true,
-         dir: `./dist`,
-         name: `Toaster`,
-         entryFileNames: `js/${nm}.js`,
-         format: 'umd'
-      },
-      plugins: [
-         ...basePlugins,
-         postcss({
-            extract: `css/${nm}.css`,
-            minimize: false,
-            sourceMap: true,
-            extensions: ['.scss']
-         })
-      ]
-   },
-   {
-      input: `./src/ts/${nm}.ts`,
-      output: {
-         sourcemap: true,
-         dir: `./dist`,
-         name: `Toaster`,
-         entryFileNames: `js/${nm}.min.js`,
+         dir: './dist',
+         name: nm.charAt(0).toUpperCase() + nm.slice(1),
+         entryFileNames: `js/${nm}${min ? '.min' : ''}.js`,
          format: 'umd',
-         plugins: [
-            terser({
-               format: {
-                  comments: false
-               }
-            })
-         ]
+         ...(min && { plugins: [terser({ format: { comments: false } })] })
       },
       plugins: [
-         ...basePlugins,
+         typescript({
+            outDir: 'dist/js',
+            removeComments: true,
+            declaration: false
+         })
+      ]
+   })),
+   ...[true, false].map(min => ({
+      input: `./src/scss/${nm}.scss`,
+      output: { dir: './dist' },
+      plugins: [
          postcss({
-            extract: `css/${nm}.min.css`,
-            minimize: true,
+            extract: `css/${nm}.${min ? 'min.' : ''}css`,
+            minimize: min,
             sourceMap: true,
             extensions: ['.scss']
          })
       ]
-   }
+   }))
 ]

@@ -11,7 +11,7 @@ $toaster-radius: 4px;
    box-shadow: 0 $toaster-radius $toaster-radius rgba(0, 0, 0, 0.4);
    border: 1px solid #000;
    border-radius: $toaster-radius;
-   padding: 6px $toaster-margin;
+   padding: 0.5em 1em;
    background: #eee;
    cursor: default;
    clip-path: inset(0 -#{$toaster-radius} 100% -#{$toaster-radius} round #{$toaster-radius * 2});

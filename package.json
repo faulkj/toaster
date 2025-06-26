@@ -6,7 +6,9 @@
    "main": "dist/js/toaster.min.js",
    "typings": "toaster.d.ts",
    "scripts": {
-      "build": "rimraf dist && rollup -c --configPlugin typescript"
+      "build:js": "rollup -c --configPlugin typescript",
+      "build:css": "sass src/scss/toaster.scss dist/css/toaster.css && sass src/scss/toaster.scss dist/css/toaster.min.css --style=compressed",
+      "build": "rimraf dist && npm run build:js && npm run build:css"
    },
    "repository": {
       "type": "git",
@@ -30,7 +32,6 @@
       "@types/node": "^24.0.4",
       "rimraf": "^6.0.1",
       "rollup": "^4.44.1",
-      "rollup-plugin-postcss": "^4.0.2",
       "sass": "^1.89.2",
       "tslib": "^2.8.1",
       "typescript": "^5.8.3"

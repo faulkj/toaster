@@ -1,4 +1,3 @@
-import postcss from 'rollup-plugin-postcss'
 import typescript from '@rollup/plugin-typescript'
 import terser from '@rollup/plugin-terser'
 
@@ -20,18 +19,6 @@ export default [
             outDir: 'dist/js',
             removeComments: true,
             declaration: false
-         })
-      ]
-   })),
-   ...[true, false].map(min => ({
-      input: `./src/scss/${nm}.scss`,
-      output: { dir: './dist' },
-      plugins: [
-         postcss({
-            extract: `css/${nm}.${min ? 'min.' : ''}css`,
-            minimize: min,
-            sourceMap: true,
-            extensions: ['.scss']
          })
       ]
    }))

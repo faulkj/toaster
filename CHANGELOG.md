@@ -1,5 +1,8 @@
 # Toaster Changelog
 
+***6/26/2025*** Version 2.1.4
+   - Fix for nullable timeout
+
 ***6/24/2025*** Version 2.1.3
    - Fix to properly display drop shadows
 

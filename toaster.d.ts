@@ -9,7 +9,7 @@ declare global {
    }
 
    interface Options {
-      timeout?: number
+      timeout?: number | null
       class?: string
       duration?: number
       anchor?: string

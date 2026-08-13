@@ -85,8 +85,8 @@ export default class Toaster implements ToasterInstance {
 
    static serve() {
       if (!Toaster.toastQueue.length) return
-      var tst = Toaster.toastQueue[0].t
-      var options = Toaster.toastQueue[0].o
+      // Guarded above, so the head is always present.
+      const { t: tst, o: options } = Toaster.toastQueue[0]!
 
       document.body.appendChild(tst)
       tst.style[(options.anchor as any)] = 0 - (tst.offsetHeight + parseInt(getComputedStyle(tst).marginBottom) + parseInt(getComputedStyle(tst).marginTop)) + "px"

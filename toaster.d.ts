@@ -19,4 +19,5 @@ declare global {
 
 }
 
+export { default } from "./src/ts/toaster"
 export { ToasterInstance, Options }

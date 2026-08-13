@@ -5,6 +5,11 @@
    "type": "module",
    "main": "dist/js/toaster.min.js",
    "typings": "toaster.d.ts",
+   "files": [
+      "dist",
+      "src",
+      "toaster.d.ts"
+   ],
    "scripts": {
       "build:js": "rollup -c --configPlugin typescript",
       "build:css": "sass src/scss/toaster.scss dist/css/toaster.css && sass src/scss/toaster.scss dist/css/toaster.min.css --style=compressed",

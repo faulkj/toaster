@@ -2,7 +2,7 @@
    "compilerOptions": {
       "target": "es2015",
       "module": "esnext",
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
       "noEmitOnError": true,
       "strict": true,
       "esModuleInterop": true,

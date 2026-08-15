@@ -21,5 +21,20 @@ export default [
             declaration: false
          })
       ]
-   }))
+   })),
+   {
+      input: `./src/ts/${nm}.ts`,
+      output: {
+         sourcemap: true,
+         file: `./dist/js/${nm}.esm.js`,
+         format: 'es'
+      },
+      plugins: [
+         typescript({
+            outDir: 'dist/js',
+            removeComments: true,
+            declaration: false
+         })
+      ]
+   }
 ]

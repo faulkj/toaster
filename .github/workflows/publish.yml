@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write # OIDC for npm provenance
+  id-token: write
 
 jobs:
   publish:
@@ -17,11 +17,10 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - run: npm ci
 
-      - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
